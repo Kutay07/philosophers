@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   routine.c                                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: kutaydebian <kutaydebian@student.42.fr>    +#+  +:+       +#+        */
+/*   By: kbatur <kbatur@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/08/27 22:30:44 by kutaydebian       #+#    #+#             */
-/*   Updated: 2025/08/31 14:34:41 by kutaydebian      ###   ########.fr       */
+/*   Updated: 2025/08/31 20:03:32 by kbatur           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,18 +21,6 @@ static void	handle_single_philo(t_philo *philo)
 	print_action(philo, "died");
 	
 }
-
-// static int	am_alive(t_philo *philo)
-// {
-// 	size_t	current_time;
-// 	size_t	time_since_meal;
-
-// 	current_time = get_time_ms();
-// 	time_since_meal = current_time - philo->times.last_meal_ms;
-// 	if (time_since_meal > philo->times.die)
-// 		return (FAILURE);
-// 	return (SUCCESS);
-// }
 
 static void	start_routine(t_philo *philo)
 {

@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   utils.c                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: kutaydebian <kutaydebian@student.42.fr>    +#+  +:+       +#+        */
+/*   By: kbatur <kbatur@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/12/01 00:00:00 by kutay             #+#    #+#             */
-/*   Updated: 2025/08/31 14:22:21 by kutaydebian      ###   ########.fr       */
+/*   Updated: 2025/08/31 20:03:16 by kbatur           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -45,8 +45,6 @@ void	print_action(t_philo *philo, const char *action)
 	int			timestamp;
 	static int	die_flag;
 
-	// if (is_this_the_light(philo->data, RED_LIGHT, philo->id - 1))
-	// 	return ;
 	pthread_mutex_lock(&philo->data->write_lock);
 	if (die_flag == 0)
 	{

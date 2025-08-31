@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   monitoring.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: kutaydebian <kutaydebian@student.42.fr>    +#+  +:+       +#+        */
+/*   By: kbatur <kbatur@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/12/01 00:00:00 by kutay             #+#    #+#             */
-/*   Updated: 2025/08/31 14:44:36 by kutaydebian      ###   ########.fr       */
+/*   Updated: 2025/08/31 20:02:38 by kbatur           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,29 +26,28 @@ int	philosopher_died(t_data *data, int i)
 	return (FAILURE);
 }
 
-/* int	all_philosophers_finished_eating(t_data *data)
+static int	philosopher_conditions(t_data *data, int i)
 {
-	int	i;
-	int	finished_count;
+	int	all_satisfied;
 
-	if (data->must_eat == -1)
-		return (FAILURE);
-	
-	finished_count = 0;
-	i = 0;
+	all_satisfied = 0;
 	while (i < data->philo_count)
 	{
 		pthread_mutex_lock(&data->meal_lock[i]);
-		if (data->philos[i].meals_eaten >= data->must_eat)
-			finished_count++;
+		if (philosopher_died(data, i))
+		{
+			print_action(&data->philos[i], "died");
+			pthread_mutex_unlock(&data->meal_lock[i]);
+			set_the_light(data, RED_LIGHT);
+			return (-1);
+		}
+		if (data->philos[i].satisfied)
+			all_satisfied++;
 		pthread_mutex_unlock(&data->meal_lock[i]);
 		i++;
 	}
-	
-	if (finished_count == data->philo_count)
-		return (SUCCESS);
-	return (FAILURE);
-} */
+	return (all_satisfied);
+}
 
 void	monitor_philosophers(t_data *data)
 {
@@ -58,25 +57,9 @@ void	monitor_philosophers(t_data *data)
 	while (1)
 	{
 		i = 0;
-		all_satisfied = 0;
-		while (i < data->philo_count)
-		{
-			pthread_mutex_lock(&data->meal_lock[i]);
-			if (philosopher_died(data, i))
-			{
-				print_action(&data->philos[i], "died");
-				/* Önce mevcut kilidi bırak, sonra tüm light değerlerini güncelle.
-				 * Aksi halde set_the_light içinde aynı meal_lock[i] tekrar kilitlenmeye
-				 * çalışılır ve Helgrind 'Attempt to re-lock' uyarısı verir. */
-				pthread_mutex_unlock(&data->meal_lock[i]);
-				set_the_light(data, RED_LIGHT);
-				return ;
-			}
-			if (data->philos[i].satisfied)
-				all_satisfied++;
-			pthread_mutex_unlock(&data->meal_lock[i]);
-			i++;
-		}
+		all_satisfied = philosopher_conditions(data, i);
+		if (all_satisfied == -1)
+			return ;
 		if (all_satisfied == data->philo_count)
 		{
 			set_the_light(data, RED_LIGHT);

@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   threads.c                                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: kutaydebian <kutaydebian@student.42.fr>    +#+  +:+       +#+        */
+/*   By: kbatur <kbatur@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/12/01 00:00:00 by kutay             #+#    #+#             */
-/*   Updated: 2025/08/31 14:09:48 by kutaydebian      ###   ########.fr       */
+/*   Updated: 2025/08/31 20:03:24 by kbatur           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -40,21 +40,6 @@ int	join_threads(t_data *data)
 	}
 	return (SUCCESS);
 }
-
-/* void	light_sleep(size_t duration_ms, t_data *data)
-{
-	size_t	start;
-	size_t	current;
-
-	start = get_time_ms();
-	while (is_this_the_light(data, GREEN_LIGHT))
-	{
-		current = get_time_ms();
-		if (current - start >= duration_ms)
-			break ;
-		usleep(50);
-	}
-} */
 
 void	light_sleep(size_t duration_ms, t_data *data)
 {
