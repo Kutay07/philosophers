@@ -5,8 +5,8 @@
 /*                                                    +:+ +:+         +:+     */
 /*   By: kbatur <kbatur@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2024/12/01 00:00:00 by kutay             #+#    #+#             */
-/*   Updated: 2025/08/31 20:03:24 by kbatur           ###   ########.fr       */
+/*   Created: 2025/08/31 20:33:47 by kbatur            #+#    #+#             */
+/*   Updated: 2025/08/31 20:33:48 by kbatur           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -35,18 +35,17 @@ int	join_threads(t_data *data)
 	while (i < data->philo_count)
 	{
 		if (pthread_join(data->philos[i].thread_id, NULL))
-			return (print_usage("Thread birleştirme başarısız"));
+			return (FAILURE);
 		i++;
 	}
 	return (SUCCESS);
 }
 
-void	light_sleep(size_t duration_ms, t_data *data)
+void	light_sleep(size_t duration_ms)
 {
 	size_t	wait;
 	size_t	current;
 
-	(void)data;
 	wait = get_time_ms();
 	current = get_time_ms();
 	while (current - wait < duration_ms)

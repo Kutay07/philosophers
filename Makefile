@@ -6,7 +6,7 @@
 #    By: kbatur <kbatur@student.42.fr>              +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2024/12/01 00:00:00 by kutay             #+#    #+#              #
-#    Updated: 2025/08/30 20:59:05 by kbatur           ###   ########.fr        #
+#    Updated: 2025/08/31 20:46:37 by kbatur           ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -26,14 +26,13 @@ SOURCES		= main.c \
 			  cleanup.c \
 			  monitoring.c \
 			  routine.c \
-			  forks.c
 
 SRCS		= $(addprefix $(SRCDIR)/, $(SOURCES))
 OBJS		= $(addprefix $(OBJDIR)/, $(SOURCES:.c=.o))
 
 # Compiler and flags
 CC			= cc
-CFLAGS		= -Wall -Wextra -Werror -pthread -g # -fsanitize=thread
+CFLAGS		= -Wall -Wextra -Werror -pthread -g #-fsanitize=thread
 INCLUDES	= -I$(INCDIR)
 
 # Colors for pretty output

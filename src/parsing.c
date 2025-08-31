@@ -3,26 +3,21 @@
 /*                                                        :::      ::::::::   */
 /*   parsing.c                                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: kutaydebian <kutaydebian@student.42.fr>    +#+  +:+       +#+        */
+/*   By: kbatur <kbatur@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2024/12/01 00:00:00 by kutay             #+#    #+#             */
-/*   Updated: 2025/08/31 14:01:15 by kutaydebian      ###   ########.fr       */
+/*   Created: 2025/08/31 20:33:35 by kbatur            #+#    #+#             */
+/*   Updated: 2025/08/31 20:56:09 by kbatur           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../include/philo.h"
 
-int	print_usage(char *msg)
+int	print_usage(int exit)
 {
-	printf("Kullanım: ./philo filozof_sayısı ölüm_süresi yemek_süresi ");
-	printf("uyku_süresi [her_filozofun_yemesi_gereken_yemek_sayısı]\n");
-	printf("Tüm argümanlar pozitif tamsayı olmalıdır\n");
-	if (msg)
-	{
-		printf("Hata: %s\n", msg);
-		return (FAILURE);
-	}
-	return (SUCCESS);
+	printf("Usage: ./philo number_of_philosophers ");
+	printf("time_to_die time_to_eat time_to_sleep ");
+	printf("[number_of_times_each_philosopher_must_eat]\n");
+	return (exit);
 }
 
 static int	is_valid_number(const char *str)
@@ -54,20 +49,17 @@ int	check_args(int argc, char **argv)
 	int	value;
 
 	if (is_valid_argc(argc) != SUCCESS)
-	{
-		print_usage(NULL);
-		return (FAILURE);
-	}
+		(print_usage(FAILURE));
 	i = 1;
 	while (i < argc)
 	{
 		if (is_valid_number(argv[i]) != SUCCESS)
-			return (print_usage("Geçersiz argüman: sayı değil"));
+			return (print_usage(FAILURE));
 		value = ft_atoi(argv[i]);
 		if (value <= 0)
-			return (print_usage("Geçersiz argüman: pozitif sayı olmalı"));
+			return (print_usage(FAILURE));
 		if (i == 1 && value > 200)
-			return (print_usage("Çok fazla filozof (maksimum 200)"));
+			return (print_usage(FAILURE));
 		i++;
 	}
 	return (SUCCESS);

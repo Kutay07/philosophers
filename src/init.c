@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   init.c                                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: kutaydebian <kutaydebian@student.42.fr>    +#+  +:+       +#+        */
+/*   By: kbatur <kbatur@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2024/12/01 00:00:00 by kutay             #+#    #+#             */
-/*   Updated: 2025/08/31 14:05:41 by kutaydebian      ###   ########.fr       */
+/*   Created: 2025/08/31 20:33:16 by kbatur            #+#    #+#             */
+/*   Updated: 2025/08/31 20:34:31 by kbatur           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -59,7 +59,7 @@ int	init_mutexes(t_data *data)
 
 static void	assign_forks(t_data *data)
 {
-	int	i;
+	int				i;
 	pthread_mutex_t	*left_fork;
 	pthread_mutex_t	*right_fork;
 

@@ -5,8 +5,8 @@
 /*                                                    +:+ +:+         +:+     */
 /*   By: kbatur <kbatur@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2024/12/01 00:00:00 by kutay             #+#    #+#             */
-/*   Updated: 2025/08/31 20:02:38 by kbatur           ###   ########.fr       */
+/*   Created: 2025/08/31 20:33:29 by kbatur            #+#    #+#             */
+/*   Updated: 2025/08/31 20:34:47 by kbatur           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -52,7 +52,7 @@ static int	philosopher_conditions(t_data *data, int i)
 void	monitor_philosophers(t_data *data)
 {
 	int	i;
-	int all_satisfied;
+	int	all_satisfied;
 
 	while (1)
 	{
@@ -65,6 +65,6 @@ void	monitor_philosophers(t_data *data)
 			set_the_light(data, RED_LIGHT);
 			return ;
 		}
-		light_sleep(600, data);
+		light_sleep(500);
 	}
 }
