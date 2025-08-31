@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   parsing.c                                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: kbatur <kbatur@student.42.fr>              +#+  +:+       +#+        */
+/*   By: kutaydebian <kutaydebian@student.42.fr>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/12/01 00:00:00 by kutay             #+#    #+#             */
-/*   Updated: 2025/08/30 21:36:51 by kbatur           ###   ########.fr       */
+/*   Updated: 2025/08/31 14:01:15 by kutaydebian      ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -80,25 +80,23 @@ int	parse_args(int argc, char **argv, t_data *data)
 	data->philo_count = ft_atoi(argv[1]);
 	data->philos = malloc(sizeof(t_philo) * data->philo_count);
 	if (!data->philos)
-		return (print_usage("Hafıza tahsisi başarısız"));
+		return (FAILURE);
 	data->forks = malloc(sizeof(pthread_mutex_t) * data->philo_count);
 	if (!data->forks)
 	{
 		free(data->philos);
-		return (print_usage("Hafıza tahsisi başarısız"));
+		return (FAILURE);
 	}
-/* 	data->meal_lock = malloc(sizeof(pthread_mutex_t) * data->philo_count);
+	data->meal_lock = malloc(sizeof(pthread_mutex_t) * data->philo_count);
 	if (!data->meal_lock)
 	{
 		free(data->forks);
 		free(data->philos);
-		return (print_usage("Hafıza tahsisi başarısız"));
-	} */
+		return (FAILURE);
+	}
 	if (argc == 6)
 		data->must_eat = ft_atoi(argv[5]);
 	else
 		data->must_eat = -1;
-	/* set_the_light(data, YELLOW_LIGHT); */
-	set_the_light(data, GREEN_LIGHT);
 	return (SUCCESS);
 }

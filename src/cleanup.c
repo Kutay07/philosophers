@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   cleanup.c                                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: kbatur <kbatur@student.42.fr>              +#+  +:+       +#+        */
+/*   By: kutaydebian <kutaydebian@student.42.fr>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/12/01 00:00:00 by kutay             #+#    #+#             */
-/*   Updated: 2025/08/30 21:43:02 by kbatur           ###   ########.fr       */
+/*   Updated: 2025/08/31 14:20:32 by kutaydebian      ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -31,9 +31,8 @@ static void	destroy_mutexes(t_data *data)
 	if (!data)
 		return ;
 	destroy_mutex_list(data->forks, data->philo_count);
-	// destroy_mutex_list(data->meal_lock, data->philo_count);
+	destroy_mutex_list(data->meal_lock, data->philo_count);
 	pthread_mutex_destroy(&data->write_lock);
-	pthread_mutex_destroy(&data->stop_lock);
 }
 
 void	cleanup_data(t_data *data)
@@ -52,9 +51,9 @@ void	cleanup_data(t_data *data)
 		free(data->forks);
 		data->forks = NULL;
 	}
-	// if (data->meal_lock)
-	// {
-	// 	free(data->meal_lock);
-	// 	data->meal_lock = NULL;
-	// }
+	if (data->meal_lock)
+	{
+		free(data->meal_lock);
+		data->meal_lock = NULL;
+	}
 }

@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   utils.c                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: kbatur <kbatur@student.42.fr>              +#+  +:+       +#+        */
+/*   By: kutaydebian <kutaydebian@student.42.fr>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/12/01 00:00:00 by kutay             #+#    #+#             */
-/*   Updated: 2025/08/30 22:08:51 by kbatur           ###   ########.fr       */
+/*   Updated: 2025/08/31 14:22:21 by kutaydebian      ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -45,10 +45,10 @@ void	print_action(t_philo *philo, const char *action)
 	int			timestamp;
 	static int	die_flag;
 
-	if (is_this_the_light(philo->data, RED_LIGHT, philo->id - 1))
-		return ;
+	// if (is_this_the_light(philo->data, RED_LIGHT, philo->id - 1))
+	// 	return ;
 	pthread_mutex_lock(&philo->data->write_lock);
-	if (die_flag == 0/*  && is_this_the_light(philo->data, GREEN_LIGHT) */)
+	if (die_flag == 0)
 	{
 		timestamp = get_time_ms() - philo->times.start_time;
 		printf("%d\t %d %s\n", timestamp, philo->id, action);
@@ -57,31 +57,6 @@ void	print_action(t_philo *philo, const char *action)
 		die_flag = 1;
 	pthread_mutex_unlock(&philo->data->write_lock);
 }
-
-// int	get_the_light(t_data *data)
-// {
-// 	int	light;
-
-// 	pthread_mutex_lock(&data->stop_lock);
-// 	light = data->stop;
-// 	pthread_mutex_unlock(&data->stop_lock);
-// 	return (light);
-// }
-
-// int	set_the_light(t_data *data, int light)
-// {
-// 	pthread_mutex_lock(&data->stop_lock);
-// 	data->stop = light;
-// 	pthread_mutex_unlock(&data->stop_lock);
-// 	return (SUCCESS);
-// }
-
-// int	is_this_the_light(t_data *data, int light)
-// {
-// 	if (get_the_light(data) == light)
-// 		return (SUCCESS);
-// 	return (FAILURE);
-// }
 
 int	get_the_light(t_data *data, int i)
 {

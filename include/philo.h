@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   philo.h                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: kbatur <kbatur@student.42.fr>              +#+  +:+       +#+        */
+/*   By: kutaydebian <kutaydebian@student.42.fr>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/12/01 00:00:00 by kutay             #+#    #+#             */
-/*   Updated: 2025/08/30 22:05:00 by kbatur           ###   ########.fr       */
+/*   Updated: 2025/08/31 13:57:50 by kutaydebian      ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -45,9 +45,9 @@ typedef struct s_times
 typedef struct s_philo
 {
 	int					id;
-	pthread_t			thread_id;
-	int					meals_eaten;
-	int					satisfied;
+	pthread_t			thread_id; //
+	int					meals_eaten; //
+	int					satisfied; //
 	int					light;
 	t_times				times;
 	pthread_mutex_t		*first_fork;
@@ -63,7 +63,7 @@ typedef struct s_data
 	pthread_mutex_t		*forks;
 	pthread_mutex_t		write_lock;
 	pthread_mutex_t		*meal_lock;
-	pthread_mutex_t		stop_lock;
+	// pthread_mutex_t		stop_lock;s
 	t_philo				*philos;
 }	t_data;
 
@@ -98,9 +98,9 @@ int			all_philosophers_satisfied(t_data *data);
 int			philosopher_died(t_data *data, int i);
 
 int			print_usage(char *msg);
-int			get_the_light(t_data *data);
+int			get_the_light(t_data *data, int i);
 int			set_the_light(t_data *data, int light);
-int			is_this_the_light(t_data *data, int light);
+int			is_this_the_light(t_data *data, int light, int i);
 int			take_forks(t_philo *philo);
 void		release_forks(t_philo *philo);
 void		philosopher_eat(t_philo *philo);

@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   main.c                                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: kbatur <kbatur@student.42.fr>              +#+  +:+       +#+        */
+/*   By: kutaydebian <kutaydebian@student.42.fr>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/12/01 00:00:00 by kutay             #+#    #+#             */
-/*   Updated: 2025/08/30 21:39:01 by kbatur           ###   ########.fr       */
+/*   Updated: 2025/08/31 14:05:45 by kutaydebian      ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -28,7 +28,7 @@ static int	init_simulation(char **argv, t_data *data)
 		cleanup_data(data);
 		return (FAILURE);
 	}
-	if (init_philosophers(data, argv))
+	if (!init_philosophers(data, argv))
 	{
 		cleanup_data(data);
 		return (FAILURE);
@@ -43,7 +43,7 @@ static int	init_simulation(char **argv, t_data *data)
 
 static int	run_simulation(t_data *data)
 {
-	/* monitor_philosophers(data); */
+	monitor_philosophers(data);
 	if (!join_threads(data))
 	{
 		cleanup_data(data);

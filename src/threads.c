@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   threads.c                                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: kbatur <kbatur@student.42.fr>              +#+  +:+       +#+        */
+/*   By: kutaydebian <kutaydebian@student.42.fr>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/12/01 00:00:00 by kutay             #+#    #+#             */
-/*   Updated: 2025/08/30 19:56:48 by kbatur           ###   ########.fr       */
+/*   Updated: 2025/08/31 14:09:48 by kutaydebian      ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,7 +21,7 @@ int	create_threads(t_data *data)
 	{
 		if (pthread_create(&data->philos[i].thread_id, NULL,
 				philosopher_routine, &data->philos[i]))
-			return (print_usage("Thread oluşturma başarısız"));
+			return (FAILURE);
 		i++;
 	}
 	return (SUCCESS);
@@ -67,6 +67,6 @@ void	light_sleep(size_t duration_ms, t_data *data)
 	while (current - wait < duration_ms)
 	{
 		current = get_time_ms();
-		usleep(50);
+		usleep(100);
 	}
 }

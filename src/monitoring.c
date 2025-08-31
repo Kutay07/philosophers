@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   monitoring.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: kbatur <kbatur@student.42.fr>              +#+  +:+       +#+        */
+/*   By: kutaydebian <kutaydebian@student.42.fr>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/12/01 00:00:00 by kutay             #+#    #+#             */
-/*   Updated: 2025/08/30 22:03:44 by kbatur           ###   ########.fr       */
+/*   Updated: 2025/08/31 14:44:36 by kutaydebian      ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -55,19 +55,21 @@ void	monitor_philosophers(t_data *data)
 	int	i;
 	int all_satisfied;
 
-	set_the_light(data, GREEN_LIGHT);
-	while (is_this_the_light(data, GREEN_LIGHT))
+	while (1)
 	{
 		i = 0;
 		all_satisfied = 0;
-		while (i < data->philo_count && is_this_the_light(data, GREEN_LIGHT))
+		while (i < data->philo_count)
 		{
 			pthread_mutex_lock(&data->meal_lock[i]);
 			if (philosopher_died(data, i))
 			{
 				print_action(&data->philos[i], "died");
-				set_the_light(data, RED_LIGHT);
+				/* Önce mevcut kilidi bırak, sonra tüm light değerlerini güncelle.
+				 * Aksi halde set_the_light içinde aynı meal_lock[i] tekrar kilitlenmeye
+				 * çalışılır ve Helgrind 'Attempt to re-lock' uyarısı verir. */
 				pthread_mutex_unlock(&data->meal_lock[i]);
+				set_the_light(data, RED_LIGHT);
 				return ;
 			}
 			if (data->philos[i].satisfied)
@@ -76,7 +78,10 @@ void	monitor_philosophers(t_data *data)
 			i++;
 		}
 		if (all_satisfied == data->philo_count)
+		{
 			set_the_light(data, RED_LIGHT);
-		usleep(600);
+			return ;
+		}
+		light_sleep(600, data);
 	}
 }
