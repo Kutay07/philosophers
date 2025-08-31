@@ -3,22 +3,22 @@
 /*                                                        :::      ::::::::   */
 /*   monitoring.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: kbatur <kbatur@student.42.fr>              +#+  +:+       +#+        */
+/*   By: kutaydebian <kutaydebian@student.42.fr>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/08/31 20:33:29 by kbatur            #+#    #+#             */
-/*   Updated: 2025/08/31 20:34:47 by kbatur           ###   ########.fr       */
+/*   Updated: 2025/09/01 01:14:09 by kutaydebian      ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "../include/philo.h"
+#include "philo.h"
 
-int	philosopher_died(t_data *data, int i)
+static int	philosopher_died(t_data *data, int i)
 {
 	size_t	current_time;
 	size_t	time_since_meal;
 
-	current_time = get_time_ms();
-	time_since_meal = current_time - data->philos[i].times.last_meal_ms;
+	current_time = get_time();
+	time_since_meal = current_time - data->philos[i].times.last_meal_time;
 	if (time_since_meal > data->philos[i].times.die)
 	{
 		return (SUCCESS);

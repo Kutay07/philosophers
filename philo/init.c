@@ -3,14 +3,14 @@
 /*                                                        :::      ::::::::   */
 /*   init.c                                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: kbatur <kbatur@student.42.fr>              +#+  +:+       +#+        */
+/*   By: kutaydebian <kutaydebian@student.42.fr>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/08/31 20:33:16 by kbatur            #+#    #+#             */
-/*   Updated: 2025/08/31 20:34:31 by kbatur           ###   ########.fr       */
+/*   Updated: 2025/09/01 01:14:00 by kutaydebian      ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "../include/philo.h"
+#include "philo.h"
 
 int	init_data(t_data *data)
 {
@@ -87,7 +87,7 @@ int	init_philosophers(t_data *data, char **argv)
 	int		i;
 	size_t	start_time;
 
-	start_time = get_time_ms();
+	start_time = get_time();
 	i = 0;
 	while (i < data->philo_count)
 	{
@@ -98,7 +98,7 @@ int	init_philosophers(t_data *data, char **argv)
 		data->philos[i].times.eat = ft_atoi(argv[3]);
 		data->philos[i].times.sleep = ft_atoi(argv[4]);
 		data->philos[i].times.start_time = start_time;
-		data->philos[i].times.last_meal_ms = start_time;
+		data->philos[i].times.last_meal_time = start_time;
 		data->philos[i].data = data;
 		i++;
 	}

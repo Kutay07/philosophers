@@ -6,10 +6,8 @@ LazyPhilosophersTester/
 
 log.txt
 
-obj/
+philo/obj/
 
 subject.txt
 
 val.txt
-
-philo

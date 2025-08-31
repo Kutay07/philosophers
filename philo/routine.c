@@ -3,14 +3,14 @@
 /*                                                        :::      ::::::::   */
 /*   routine.c                                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: kbatur <kbatur@student.42.fr>              +#+  +:+       +#+        */
+/*   By: kutaydebian <kutaydebian@student.42.fr>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/08/31 20:33:40 by kbatur            #+#    #+#             */
-/*   Updated: 2025/08/31 20:35:15 by kbatur           ###   ########.fr       */
+/*   Updated: 2025/09/01 01:14:15 by kutaydebian      ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "../include/philo.h"
+#include "philo.h"
 
 static void	handle_single_philo(t_philo *philo)
 {
@@ -29,7 +29,7 @@ static void	start_routine(t_philo *philo)
 	print_action(philo, "has taken a fork");
 	print_action(philo, "is eating");
 	pthread_mutex_lock(&philo->data->meal_lock[philo->id - 1]);
-	philo->times.last_meal_ms = get_time_ms();
+	philo->times.last_meal_time = get_time();
 	philo->meals_eaten++;
 	if (philo->data->must_eat != -1
 		&& philo->meals_eaten >= philo->data->must_eat)

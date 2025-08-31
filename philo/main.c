@@ -3,16 +3,16 @@
 /*                                                        :::      ::::::::   */
 /*   main.c                                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: kbatur <kbatur@student.42.fr>              +#+  +:+       +#+        */
+/*   By: kutaydebian <kutaydebian@student.42.fr>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/08/31 20:33:25 by kbatur            #+#    #+#             */
-/*   Updated: 2025/08/31 20:33:26 by kbatur           ###   ########.fr       */
+/*   Updated: 2025/09/01 01:14:05 by kutaydebian      ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "../include/philo.h"
+#include "philo.h"
 
-size_t	get_time_ms(void)
+size_t	get_time(void)
 {
 	struct timeval	tv;
 

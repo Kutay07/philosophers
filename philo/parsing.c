@@ -3,16 +3,16 @@
 /*                                                        :::      ::::::::   */
 /*   parsing.c                                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: kbatur <kbatur@student.42.fr>              +#+  +:+       +#+        */
+/*   By: kutaydebian <kutaydebian@student.42.fr>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/08/31 20:33:35 by kbatur            #+#    #+#             */
-/*   Updated: 2025/08/31 20:56:09 by kbatur           ###   ########.fr       */
+/*   Updated: 2025/09/01 01:14:12 by kutaydebian      ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "../include/philo.h"
+#include "philo.h"
 
-int	print_usage(int exit)
+static int	print_usage(int exit)
 {
 	printf("Usage: ./philo number_of_philosophers ");
 	printf("time_to_die time_to_eat time_to_sleep ");

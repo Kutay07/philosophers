@@ -3,14 +3,14 @@
 /*                                                        :::      ::::::::   */
 /*   utils.c                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: kbatur <kbatur@student.42.fr>              +#+  +:+       +#+        */
+/*   By: kutaydebian <kutaydebian@student.42.fr>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/08/31 20:33:54 by kbatur            #+#    #+#             */
-/*   Updated: 2025/08/31 20:33:55 by kbatur           ###   ########.fr       */
+/*   Updated: 2025/09/01 01:14:21 by kutaydebian      ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "../include/philo.h"
+#include "philo.h"
 
 int	ft_atoi(const char *str)
 {
@@ -48,7 +48,7 @@ void	print_action(t_philo *philo, const char *action)
 	pthread_mutex_lock(&philo->data->write_lock);
 	if (die_flag == 0)
 	{
-		timestamp = get_time_ms() - philo->times.start_time;
+		timestamp = get_time() - philo->times.start_time;
 		printf("%d\t %d %s\n", timestamp, philo->id, action);
 	}
 	if (action[0] == 'd')

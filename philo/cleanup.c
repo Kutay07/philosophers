@@ -3,14 +3,14 @@
 /*                                                        :::      ::::::::   */
 /*   cleanup.c                                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: kbatur <kbatur@student.42.fr>              +#+  +:+       +#+        */
+/*   By: kutaydebian <kutaydebian@student.42.fr>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/08/31 20:32:54 by kbatur            #+#    #+#             */
-/*   Updated: 2025/08/31 20:34:17 by kbatur           ###   ########.fr       */
+/*   Updated: 2025/09/01 01:13:38 by kutaydebian      ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "../include/philo.h"
+#include "philo.h"
 
 void	destroy_mutex_list(pthread_mutex_t *m, int len)
 {

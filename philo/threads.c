@@ -3,14 +3,14 @@
 /*                                                        :::      ::::::::   */
 /*   threads.c                                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: kbatur <kbatur@student.42.fr>              +#+  +:+       +#+        */
+/*   By: kutaydebian <kutaydebian@student.42.fr>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/08/31 20:33:47 by kbatur            #+#    #+#             */
-/*   Updated: 2025/08/31 20:33:48 by kbatur           ###   ########.fr       */
+/*   Updated: 2025/09/01 01:14:18 by kutaydebian      ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "../include/philo.h"
+#include "philo.h"
 
 int	create_threads(t_data *data)
 {
@@ -46,11 +46,11 @@ void	light_sleep(size_t duration_ms)
 	size_t	wait;
 	size_t	current;
 
-	wait = get_time_ms();
-	current = get_time_ms();
+	wait = get_time();
+	current = get_time();
 	while (current - wait < duration_ms)
 	{
-		current = get_time_ms();
+		current = get_time();
 		usleep(100);
 	}
 }
